@@ -1,20 +1,15 @@
-Nette Web Project
-=================
+Skeleton web project in Nette
+==================
 
-Welcome to the Nette Web Project! This is a basic skeleton application built using
-[Nette](https://nette.org), ideal for kick-starting your new web projects.
+Welcome this is the basic skeleton of an application built with
+[Nette](https://nette.org), a new framework for developing our web projects.
 
-Nette is a renowned PHP web development framework, celebrated for its user-friendliness,
-robust security, and outstanding performance. It's among the safest choices
-for PHP frameworks out there.
-
-If Nette helps you, consider supporting it by [making a donation](https://nette.org/donate).
+If you find Nette helpful, please consider supporting her with a [donation](https://nette.org/donate).
 Thank you for your generosity!
 
 
 Requirements
 ------------
-
 This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
 
 
@@ -24,8 +19,7 @@ Installation
 To install the Web Project, Composer is the recommended tool. If you're new to Composer,
 follow [these instructions](https://doc.nette.org/composer). Then, run:
 
-	composer create-project nette/web-project path/to/install
-	cd path/to/install
+	composer create-project mirdaczbpr/skeleton-app-base skeleton-app-base
 
 Ensure the `temp/` and `log/` directories are writable.
 
@@ -43,10 +37,3 @@ For Apache or Nginx users, configure a virtual host pointing to your project's `
 
 **Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
 Refer to [security warning](https://nette.org/security-warning) for more details.
-
-
-Minimal Skeleton
-----------------
-
-For demonstrating issues or similar tasks, rather than starting a new project, use
-this [minimal skeleton](https://github.com/nette/web-project/tree/minimal).
