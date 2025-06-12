@@ -35,7 +35,7 @@ CREATE TABLE `users` (
   `authtoken` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
   `ip` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB CHARSET=utf8;
+) ENGINE=InnoDB CHARSET=utf8;```
 
 
 
