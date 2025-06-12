@@ -1,4 +1,5 @@
 Features
+==================
 ✅ Skeleton application based on Nette 3.2, ready for PHP 8.1+
 
 🔐 User registration and login system (with DB table users)
