@@ -18,9 +18,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB CHARSET=utf8;
 ```
 
-🧰 Core Nette components:
-
-nette/application, nette/forms, nette/database, nette/security, nette/http, nette/utils
+🧰 Core Nette components: nette/application, nette/forms, nette/database, nette/security, nette/http, nette/utils
 
 🛠 Debugging with Tracy
 
@@ -34,7 +32,7 @@ nette/application, nette/forms, nette/database, nette/security, nette/http, nett
 
 🚀 Quick start using built-in PHP server: `php -S localhost:8000 -t www`
 
-🔐 Security best practices: **Protect app/, config/, log/, and temp/ folders from web access**
+🔐 Security best practices: Protect **app/**, **config/**, **log/**, and **temp/** folders from web access
 
 🧪 Basic testing setup using nette/tester
 
