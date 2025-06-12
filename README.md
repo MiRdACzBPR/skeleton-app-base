@@ -1,21 +1,18 @@
 Skeleton web project in Nette
 ==================
 
-Welcome this is the basic skeleton of an application built with
-[Nette](https://nette.org), a new framework for developing our web projects.
+Welcome! This is the basic skeleton of an application built with
+[Nette](https://nette.org), a framework for developing modern web projects.
 
-If you find Nette helpful, please consider supporting her with a [donation](https://nette.org/donate).
+If you find Nette helpful, please consider supporting it with a [donation](https://nette.org/donate).
 Thank you for your generosity!
-
 
 Requirements
 ------------
-This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
-
+This Web Project is compatible with **Nette 3.2** and requires **PHP 8.1+**.
 
 Installation
 ------------
-
 To install the Web Project, Composer is the recommended tool. If you're new to Composer,
 follow [these instructions](https://doc.nette.org/composer). Then, run:
 
@@ -23,7 +20,8 @@ follow [these instructions](https://doc.nette.org/composer). Then, run:
 
 Ensure the `temp/` and `log/` directories are writable.
 
-It is necessary to insert the users table into the database
+It is necessary to insert the `users` table into the database:
+
 ```sql
 CREATE TABLE `users` (
   `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -36,18 +34,50 @@ CREATE TABLE `users` (
   `ip` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB CHARSET=utf8;
-```
+
+Features
+✅ Skeleton application based on Nette 3.2, ready for PHP 8.1+
+
+🔐 User registration and login system (with DB table users)
+
+🧰 Core Nette components:
+
+nette/application, nette/forms, nette/database, nette/security, nette/http, nette/utils
+
+🛠 Debugging with Tracy
+
+🌍 Translation support via contributte/translation
+
+🧾 Bootstrap-form integration using contributte/forms-bootstrap
+
+🎨 Latte templating engine
+
+📦 Composer-ready installation
+
+🚀 Quick start using built-in PHP server:
+
+bash
+Zkopírovat
+Upravit
+php -S localhost:8000 -t www
+🔐 Security best practices:
+
+Protect app/, config/, log/, and temp/ folders from web access
+
+🧪 Basic testing setup using nette/tester
+
+🗂 Project structure prepared for MVC and further expansion
 
 Web Server Setup
-----------------
-
 To quickly dive in, use PHP's built-in server:
 
-	php -S localhost:8000 -t www
+nginx
+Zkopírovat
+Upravit
+php -S localhost:8000 -t www
+Then, open http://localhost:8000 in your browser to view the welcome page.
 
-Then, open `http://localhost:8000` in your browser to view the welcome page.
+For Apache or Nginx users, configure a virtual host pointing to your project's www/ directory.
 
-For Apache or Nginx users, configure a virtual host pointing to your project's `www/` directory.
-
-**Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
-Refer to [security warning](https://nette.org/security-warning) for more details.
+Important Note: Ensure app/, config/, log/, and temp/ directories are not web-accessible.
+Refer to security warning for more details.
