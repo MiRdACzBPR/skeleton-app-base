@@ -1,6 +1,6 @@
 Features
 ==================
-✅ Skeleton application based on [Nette 3.2](https://nette.org) & [Latte](https://latte.nette.org), ready for [PHP](https://www.php.net) 8.1+
+✅ Skeleton application using the latest [Nette](https://nette.org) framework and [Latte](https://latte.nette.org) templating engine, fully compatible with [PHP](https://www.php.net) 8.1 and newer.
 
 🔐 User registration and login system (with DB table users)
 
