@@ -1,11 +1,52 @@
-# Information about us
+Nette Web Project
+=================
 
-<img src="https://img.icons8.com/?size=100&id=65903&format=png&color=000000" align="right" height="100px" />
+Welcome to the Nette Web Project! This is a basic skeleton application built using
+[Nette](https://nette.org), ideal for kick-starting your new web projects.
 
-👋 Hi, I’m @MiRdACzBPR
-my name is Miroslav Liška and I am a developer at the BPR - BOHEMIA PUBLIC RELATION S.R.O. agency.
-My colleague Ondřej Bím participates with me in the development of not only applications for BPR - BOHEMIA PUBLIC RELATION S.R.O. ☕️
+Nette is a renowned PHP web development framework, celebrated for its user-friendliness,
+robust security, and outstanding performance. It's among the safest choices
+for PHP frameworks out there.
 
-We use Nette💚 and the Latte💚<br>💣 templating system to create applications.
----
-&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+If Nette helps you, consider supporting it by [making a donation](https://nette.org/donate).
+Thank you for your generosity!
+
+
+Requirements
+------------
+
+This Web Project is compatible with Nette 3.2 and requires PHP 8.1.
+
+
+Installation
+------------
+
+To install the Web Project, Composer is the recommended tool. If you're new to Composer,
+follow [these instructions](https://doc.nette.org/composer). Then, run:
+
+	composer create-project nette/web-project path/to/install
+	cd path/to/install
+
+Ensure the `temp/` and `log/` directories are writable.
+
+
+Web Server Setup
+----------------
+
+To quickly dive in, use PHP's built-in server:
+
+	php -S localhost:8000 -t www
+
+Then, open `http://localhost:8000` in your browser to view the welcome page.
+
+For Apache or Nginx users, configure a virtual host pointing to your project's `www/` directory.
+
+**Important Note:** Ensure `app/`, `config/`, `log/`, and `temp/` directories are not web-accessible.
+Refer to [security warning](https://nette.org/security-warning) for more details.
+
+
+Minimal Skeleton
+----------------
+
+For demonstrating issues or similar tasks, rather than starting a new project, use
+this [minimal skeleton](https://github.com/nette/web-project/tree/minimal).
