@@ -3,7 +3,7 @@
         'name' => 'mirdaczbpr/skeleton-app-base',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '66df7aa5ebfd8fd79666bc35da17069de4f5cf82',
+        'reference' => 'aa951857d357029f45bc44ccf71655a9eb6f01d3',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'mirdaczbpr/skeleton-app-base' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '66df7aa5ebfd8fd79666bc35da17069de4f5cf82',
+            'reference' => 'aa951857d357029f45bc44ccf71655a9eb6f01d3',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
