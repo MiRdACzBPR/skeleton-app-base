@@ -105,3 +105,114 @@ Protect `app/`, `config/`, `log/`, and `temp/` folders from web access
 🧪 Basic testing setup using [nette/tester](https://tester.nette.org/)
 
 🗂 Project structure prepared for MVC and further expansion
+
+--------------
+
+Skeleton webový projekt v Nette
+=============================
+
+Vítejte! Toto je základní kostra moderní webové aplikace postavené na frameworku 
+[Nette](https://nette.org) a šablonovacím systému [Latte](https://latte.nette.org).  
+Pokud vám Nette pomáhá, zvažte prosím jeho [podporu formou daru](https://nette.org/donate).  
+Děkujeme za vaši štědrost!
+
+Požadavky
+---------
+
+- [PHP](https://www.php.net) verze 8.1 nebo novější
+- [Composer](https://getcomposer.org)
+- Kompatibilní s [Nette](https://nette.org) 3.2+
+
+Instalace
+---------
+
+Pro instalaci aplikace použijte Composer:
+
+```bash
+composer create-project mirdaczbpr/skeleton-app-base skeleton-app-base
+```
+
+Ujistěte se, že následující složky mají povolený zápis:
+
+- `temp/`
+- `log/`
+
+Nastavení databáze
+------------------
+
+Před spuštěním aplikace je potřeba do databáze vložit tabulku `users`:
+
+```sql
+CREATE TABLE `users` (
+  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+  `role` varchar(30) COLLATE utf8mb4_czech_ci NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_czech_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8mb4_czech_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_czech_ci NOT NULL,
+  `active_key` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_czech_ci DEFAULT NULL,
+  `authtoken` varchar(128) COLLATE utf8mb4_czech_ci NOT NULL,
+  `ip` varchar(45) COLLATE utf8mb4_czech_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
+```
+
+Spuštění webového serveru
+--------------------------
+
+Pro rychlé spuštění aplikace pomocí vestavěného PHP serveru spusťte:
+
+```bash
+php -S localhost:8000 -t www
+```
+
+Poté otevřete ve svém prohlížeči adresu `http://localhost:8000`.
+
+Používáte-li Apache nebo Nginx, nastavte virtuální hostitel tak, aby směřoval do složky `www/`.
+
+⚠️ **Důležité:** Zabezpečte tyto složky proti přímému přístupu z webu:  
+`app/`, `config/`, `log/`, `temp/`
+
+Funkce projektu
+===============
+
+✅ Aplikace postavená na nejnovějším [Nette](https://nette.org) frameworku a šablonovacím systému 
+[Latte](https://latte.nette.org), plně kompatibilní s [PHP](https://www.php.net) 8.1+
+
+🔐 Registrace a přihlášení uživatelů (pomocí tabulky `users`)
+
+🧰 Klíčové komponenty Nette:
+- `nette/application`
+- `nette/forms`
+- `nette/database`
+- `nette/security`
+- `nette/http`
+- `nette/utils`
+
+🛠 Ladění pomocí [Tracy](https://tracy.nette.org/)
+
+🌍 Podpora překladů přes [contributte/translation](https://contributte.org/packages/contributte/translation.html#content)
+
+🧾 Integrace Bootstrap formulářů přes [contributte/forms-bootstrap](https://contributte.org/packages/contributte/forms-bootstrap.html)
+
+🎨 Šablonování pomocí [Latte](https://latte.nette.org)
+
+📦 Instalace přes Composer:
+
+```bash
+composer create-project mirdaczbpr/skeleton-app-base MiRdACz-BPR
+```
+
+🚀 Rychlé spuštění pomocí vestavěného PHP serveru:
+
+```bash
+php -S localhost:8000 -t www
+```
+
+🔐 Bezpečnostní doporučení:  
+Zajistěte, aby složky `app/`, `config/`, `log/` a `temp/` nebyly dostupné z webu
+
+🧪 Základní nastavení testování pomocí [nette/tester](https://tester.nette.org/)
+
+🗂 Struktura projektu připravena pro MVC a další rozšíření
+
