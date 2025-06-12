@@ -22,8 +22,7 @@
 		"contributte/forms-bootstrap": "^0.8.5"
 	},
 	"require-dev": {
-		"nette/tester": "^2.5",
-		"symfony/thanks": "^1"
+		"nette/tester": "^2.5"
 	},
 	"autoload": {
 		"psr-4": {
@@ -31,12 +30,22 @@
 		}
 	},
 	"scripts": {
-		"start": "php -S localhost:8000 -t www"
+	  "start": "php -S localhost:8000 -t www",
+	  "test": "tester tests",
+	  "check": [
+	    "@test",
+	    "composer validate --strict",
+	    "php -l www/index.php"
+	  ]
 	},
 	"config": {
-		"allow-plugins": {
-			"symfony/thanks": true
-		}
+	  "platform": {
+	    "php": "8.1"
+	  },
+	  "sort-packages": true,
+	  "allow-plugins": {
+	    "symfony/thanks": true
+	  }
 	},
 	"minimum-stability": "stable",
 	"prefer-stable": true
