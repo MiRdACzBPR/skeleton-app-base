@@ -28,7 +28,7 @@ CREATE TABLE `users` (
 
 🎨 Latte templating engine
 
-📦 Composer-ready installation `composer create-project mirdaczbpr/skeleton-app-base skeleton-app-base`
+📦 Composer-ready installation `composer create-project mirdaczbpr/skeleton-app-base MiRdACz-BPR`
 
 🚀 Quick start using built-in PHP server: `php -S localhost:8000 -t www`
 
