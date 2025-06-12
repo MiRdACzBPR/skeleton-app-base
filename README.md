@@ -20,7 +20,7 @@ CREATE TABLE `users` (
 
 🧰 Core Nette components:
 
-`nette/application, nette/forms, nette/database, nette/security, nette/http, nette/utils`
+nette/application, nette/forms, nette/database, nette/security, nette/http, nette/utils
 
 🛠 Debugging with Tracy
 
@@ -40,7 +40,7 @@ CREATE TABLE `users` (
 
 🔐 Security best practices:
 
-Protect app/, config/, log/, and temp/ folders from web access
+**Protect app/, config/, log/, and temp/ folders from web access**
 
 🧪 Basic testing setup using nette/tester
 
