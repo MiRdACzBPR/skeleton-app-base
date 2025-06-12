@@ -32,7 +32,7 @@ CREATE TABLE `users` (
 
 🚀 Quick start using built-in PHP server: `php -S localhost:8000 -t www`
 
-🔐 Security best practices: Protect app/, config/, log/, and temp/ folders from web access
+🔐 Security best practices: Protect `app/`, `config/`, `log/`, and `temp/` folders from web access
 
 🧪 Basic testing setup using nette/tester
 
