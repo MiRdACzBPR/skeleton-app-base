@@ -1,0 +1,62 @@
+parameters:
+
+routing:
+	cache: true
+
+application:
+	errorPresenter:
+		4xx: Error:Error4xx
+		5xx: Error:Error5xx
+	mapping:
+		*: App\Presentation\*\**Presenter
+
+security:
+	authentication:
+	    # po jak dlouhé době nečinnosti bude uživatel odhlášen
+	    expiration: 60 minutes        # (string) výchozí je nenastaveno
+	    # jméno cookie
+	    cookieName: userId            # (string) výchozí je userid
+	    # domény, které přijímají cookie
+	    cookieDomain: 'new.local'   # (string|domain)
+	    # omezení při přístupu z jiné domény
+	    cookieSamesite: Lax          # (Strict|Lax|None) výchozí je Lax
+
+database:
+	dsn: 'mysql:host=127.0.0.1;dbname=nette_db'
+	user: root
+	password: heslo
+	options:
+		PDO::MYSQL_ATTR_COMPRESS: true
+
+
+latte:
+	strictTypes: yes
+	strictParsing: yes
+	extensions:
+		- App\Presentation\Accessory\LatteExtension
+
+di:
+	lazy: true
+	export:
+		parameters: no
+		tags: no
+
+session:
+	expiration: 30 minutes
+	savePath: "%tempDir%/sessions"
+
+extensions:
+	translation: Contributte\Translation\DI\TranslationExtension
+
+translation:
+	locales:
+		whitelist: [en, cs]
+		default: cs
+		fallback: [cs]
+	dirs:
+		- %appDir%/Lang
+	returnOriginalMessage: true # to not translate undefined messages, default is true
+	localeResolvers:
+		- Contributte\Translation\LocalesResolvers\Router
+		- Contributte\Translation\LocalesResolvers\Session
+		- Contributte\Translation\LocalesResolvers\Parameter
