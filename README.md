@@ -16,9 +16,9 @@ nette/application, nette/forms, nette/database, nette/security, nette/http, nett
 🎨 Latte templating engine
 
 📦 Composer-ready installation
-<pre>php -S localhost:8000 -t www</pre>
 
 🚀 Quick start using built-in PHP server:
+
 <pre>php -S localhost:8000 -t www</pre>
 
 🔐 Security best practices:
