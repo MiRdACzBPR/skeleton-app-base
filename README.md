@@ -22,9 +22,9 @@ CREATE TABLE `users` (
 
 🛠 Debugging with Tracy
 
-🌍 Translation support via contributte/translation
+🌍 Translation support via **contributte/translation**
 
-🧾 Bootstrap-form integration using contributte/forms-bootstrap
+🧾 Bootstrap-form integration using **contributte/forms-bootstrap**
 
 🎨 Latte templating engine
 
