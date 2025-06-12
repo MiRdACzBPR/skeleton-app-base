@@ -19,7 +19,7 @@ Installation
 To install the application, use Composer:
 
 ```bash
-composer create-project mirdaczbpr/skeleton-app-base skeleton-app-base
+composer create-project mirdaczbpr/skeleton-app-base MiRdACz-BPR
 ```
 
 Make sure the following folders are writable:
@@ -129,7 +129,7 @@ Instalace
 Pro instalaci aplikace použijte Composer:
 
 ```bash
-composer create-project mirdaczbpr/skeleton-app-base skeleton-app-base
+composer create-project mirdaczbpr/skeleton-app-base MiRdACz-BPR
 ```
 
 Ujistěte se, že následující složky mají povolený zápis:
