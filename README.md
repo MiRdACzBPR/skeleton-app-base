@@ -30,9 +30,15 @@ CREATE TABLE `users` (
 
 🎨 Templating with [Latte](https://latte.nette.org)
 
-📦 Composer-ready installation: ```bash composer create-project mirdaczbpr/skeleton-app-base MiRdACz-BPR ```
+📦 Composer-ready installation:
+```bash
+composer create-project mirdaczbpr/skeleton-app-base MiRdACz-BPR
+```
 
-🚀 Quick start using built-in PHP server: ```bash php -S localhost:8000 -t www ```
+🚀 Quick start using built-in PHP server:
+```bash
+php -S localhost:8000 -t www
+```
 
 🔐 Security best practices: Protect `app/`, `config/`, `log/`, and `temp/` folders from web access
 
