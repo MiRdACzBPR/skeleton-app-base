@@ -1,6 +1,6 @@
 # information about us
 
-<img src="https://www.freepik.com/premium-vector/cyber-hacker-cartoon-vector-cyber-crime-concept-design-illustration-hacking-system-protection_335917516.htm#fromView=keyword&page=1&position=9&uuid=b6309858-5a03-47bf-a0c7-41cf23839e15&query=Github+Character" align="right" height="200px" />
+<img src="https://img.icons8.com/?size=100&id=65903&format=png&color=000000" align="right" height="200px" />
 
 👋 Hi, I’m @MiRdACzBPR
 my name is Miroslav Liška and I am a developer at the BPR - BOHEMIA PUBLIC RELATION S.R.O. agency.
