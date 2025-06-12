@@ -20,27 +20,18 @@
 		"latte/latte": "^3.0",
 		"tracy/tracy": "^2.10",
 		"contributte/translation": "^2.0",
-		"contributte/forms-bootstrap": "^0.8.5",
-		
-		"mirdaczbpr/skeleton-app-base": "dev-main"
+		"contributte/forms-bootstrap": "^0.8.5"
 	},
 	"require-dev": {
 		"nette/tester": "^2.5",
 		"symfony/thanks": "^1"
 	},
-	"repositories": [
-		{
-			"type": "vcs",
-			"url": "https://github.com/MiRdACzBPR/skeleton-app-base"
-		}
-	],
 	"autoload": {
 		"psr-4": {
 			"App\\": "app"
 		}
 	},
-	"minimum-stability": "dev",
-	"prefer-stable": true,
+	"minimum-stability": "stable",
 	"config": {
 		"allow-plugins": {
 			"symfony/thanks": true
