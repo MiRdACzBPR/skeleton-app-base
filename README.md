@@ -1,4 +1,4 @@
-# information about us
+# Information about us
 
 <img src="https://img.icons8.com/?size=100&id=65903&format=png&color=000000" align="right" height="100px" />
 
