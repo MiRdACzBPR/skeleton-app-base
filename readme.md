@@ -85,7 +85,7 @@ Features
 ✅ Skeleton application using the latest [Nette](https://nette.org) framework and 
 [Latte](https://latte.nette.org) templating engine, fully compatible with [PHP](https://www.php.net) 8.1 and newer.
 
-🔐 User registration and login system (with DB table `users`)
+🔐 User registration and login system (with DB table `users` `permissions` and login `admin` `admin`)
 
 🧰 Core Nette components:
 - `nette/application`
@@ -210,7 +210,7 @@ Funkce projektu
 ✅ Aplikace postavená na nejnovějším [Nette](https://nette.org) frameworku a šablonovacím systému 
 [Latte](https://latte.nette.org), plně kompatibilní s [PHP](https://www.php.net) 8.1+
 
-🔐 Registrace a přihlášení uživatelů (pomocí tabulky `users`)
+🔐 Registrace a přihlášení uživatelů (pomocí tabulky `users` `permissions` a login `admin` `admin`)
 
 🧰 Klíčové komponenty Nette:
 - `nette/application`
