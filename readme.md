@@ -30,7 +30,7 @@ Make sure the following folders are writable:
 Database Setup
 --------------
 
-Before running the app, insert the `users` table into your database:
+Before running the app, insert the `users` `permissions` table into your database:
 
 ```sql
 CREATE TABLE `users` (
@@ -45,6 +45,22 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
+
+INSERT INTO `users` (`id`, `role`, `username`, `email`, `password`, `active_key`, `authtoken`, `ip`, `created_at`) VALUES
+(12, 'admin', 'admin', 'admin@admin.cz', '$2y$10$qd6tnFXvP0.ghiAbsy8hgeN6bEJ/XXCe/kgOtUm2/Dukqp3z.sF5q', NULL, 'u3pqu6fv6ddbl6ax8f', '::1', '2025-06-17 21:24:31');
+
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(50) COLLATE utf8mb4_czech_ci NOT NULL,
+  `resource` varchar(100) COLLATE utf8mb4_czech_ci NOT NULL,
+  `privilege` varchar(50) COLLATE utf8mb4_czech_ci DEFAULT NULL,
+  `allowed` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
+
+INSERT INTO `permissions` (`id`, `role`, `resource`, `privilege`, `allowed`) VALUES
+(5, 'admin', 'Admin', 'default', 1);
+
 ```
 
 Web Server Setup
@@ -140,7 +156,7 @@ Ujistěte se, že následující složky mají povolený zápis:
 Nastavení databáze
 ------------------
 
-Před spuštěním aplikace je potřeba do databáze vložit tabulku `users`:
+Před spuštěním aplikace je potřeba do databáze vložit tabulku `users` `permissions`:
 
 ```sql
 CREATE TABLE `users` (
@@ -155,6 +171,21 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
+
+INSERT INTO `users` (`id`, `role`, `username`, `email`, `password`, `active_key`, `authtoken`, `ip`, `created_at`) VALUES
+(12, 'admin', 'admin', 'admin@admin.cz', '$2y$10$qd6tnFXvP0.ghiAbsy8hgeN6bEJ/XXCe/kgOtUm2/Dukqp3z.sF5q', NULL, 'u3pqu6fv6ddbl6ax8f', '::1', '2025-06-17 21:24:31');
+
+CREATE TABLE IF NOT EXISTS `permissions` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `role` varchar(50) COLLATE utf8mb4_czech_ci NOT NULL,
+  `resource` varchar(100) COLLATE utf8mb4_czech_ci NOT NULL,
+  `privilege` varchar(50) COLLATE utf8mb4_czech_ci DEFAULT NULL,
+  `allowed` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_czech_ci;
+
+INSERT INTO `permissions` (`id`, `role`, `resource`, `privilege`, `allowed`) VALUES
+(5, 'admin', 'Admin', 'default', 1);
 ```
 
 Spuštění webového serveru
