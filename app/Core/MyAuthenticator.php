@@ -52,7 +52,7 @@ class MyAuthenticator implements Nette\Security\Authenticator, Nette\Security\Id
         // zástupnou identitu nahradíme plnou identitou, jako v authenticate()
         $row = $this->database->table('users')->where('authtoken',$identity->getId())->fetch();
         return $row
-            ? new SimpleIdentity($row->id, null, ['role' => $row->role,'name' => $row->username])
+            ? new SimpleIdentity($row->id, $row->role, ['role' => $row->role,'name' => $row->username])
             : null;
     }
 }

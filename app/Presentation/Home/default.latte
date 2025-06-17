@@ -1,5 +1,5 @@
 {block content}
-{cache $lang}
+{cache [$lang,$user->getRoles()]}
 <div class="container">
 <h1>{_home.test}</h1>
 </div>

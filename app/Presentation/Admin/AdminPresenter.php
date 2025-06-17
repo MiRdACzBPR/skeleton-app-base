@@ -10,16 +10,19 @@ use Nette;
 
 final class AdminPresenter extends BasePresenter
 {
-
-    protected function startup()
+    public function __construct(private AdminFacade $adminFacade)
     {
-        parent::startup();
-        if (!$this->getUser()->isLoggedIn()) {
-            $this->redirect('Sign:login');
-        }
-    }
+	}
 
     public function renderDefault(): void
 	{
+        $this->template->dumpAccess = $this->adminFacade->dumpAccess()->fetchAll();
+        $this->template->dumpUsers = $this->adminFacade->dumpUsers()->fetchAll();
+    }
+
+    public function actionLogOut(): void
+    {
+        $user = $this->getUser();$user->logout();
+        $this->flashMessage($this->translator->translate('sign.logOut'),'alert-success');$this->redirect('this');
     }
 }

@@ -8,7 +8,6 @@ use Nette\Application\Attributes\Persistent;
 use Nette\Http\Session;
 use Nette\Security\User;
 
-
 class BasePresenter extends Nette\Application\UI\Presenter
 {
 
@@ -21,19 +20,29 @@ class BasePresenter extends Nette\Application\UI\Presenter
     /** @var Contributte\Translation\LocalesResolvers\Session @inject */
     public $translatorSessionResolver;
 
+    protected function startup(): void
+	{
+        parent::startup();
+        $this->checkPermissions();
+    }
 
     public function handleChangeLocale(string $locale): void
 	{
 		$this->translatorSessionResolver->setLocale($locale);
 		$this->redirect('this');
 	}
-    public function handleLogOut(): void
-    {
-        $user = $this->getUser();
-        $user->logout();
-        $this->flashMessage($this->translator->translate('sign.logOut'),'alert-success');
-        $this->redirect('this');
+
+    protected function checkPermissions(): void
+	{
+        $resource = $this->getName();   // např. "User"
+        $privilege = $this->getAction(); // např. "edit"
+
+        if (!$this->user->isAllowed($resource, $privilege)) {
+            $this->flashMessage($this->translator->translate('Opravneni-ne'), 'alert-danger');
+            $this->redirect('Home:default');
+        }
     }
+
     public function beforeRender(): void
     {
       $this->template->lang = $this->translator->getLocale();

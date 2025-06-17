@@ -44,7 +44,7 @@ final class SignPresenter extends BasePresenter
         $form->onSuccess[] = function (Form $form,$data){
             try {
                 $this->signFacade->Login($data);
-                $this->flashMessage($this->translator->translate('sign.regSuccess'),'alert-success');
+                $this->flashMessage($this->translator->translate('sign.logSuccess'),'alert-success');
                 $this->redirect('Admin:default');
             }catch (Nette\Security\AuthenticationException $e) {
                 if($e->getMessage() == 'password'){

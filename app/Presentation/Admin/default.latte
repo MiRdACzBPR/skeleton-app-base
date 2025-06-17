@@ -1,4 +1,7 @@
 {block content}
 <div class="container">
-<h1>ADmin</h1>
+<h1>Admin</h1>
+<div class="alert alert-warning alert-dismissible fade show" role="alert">Dump tabulky do tabulky se stylem BS, vytvořený pomocí filtru</div>
+{$dumpAccess|accessDump|noescape}
+{$dumpUsers|accessDump|noescape}
 </div>
