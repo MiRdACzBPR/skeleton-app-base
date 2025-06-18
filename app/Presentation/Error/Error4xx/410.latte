@@ -1,6 +1,21 @@
 {block content}
-<h1 n:block=title>Page Not Found</h1>
+<div class="container mt-5 d-flex flex-column justify-content-center align-items-center text-center">
+  <div class="row w-100 mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card shadow-sm">
+       <div class="card-body">
+         <h1 n:block=title class="display-4 mb-3">{_error.page}</h1>
+         <p class="lead">
+           {_error.pageText}
+         </p>
+         <p class="text-muted small">error 404</p>
+         <a n:href=":Home:default" class="btn btn-primary mt-4">
+           {_error.zpet}
+         </a>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}
 
-<p>The page you requested has been taken off the site. We apologize for the inconvenience.</p>
-
-<p><small>error 410</small></p>

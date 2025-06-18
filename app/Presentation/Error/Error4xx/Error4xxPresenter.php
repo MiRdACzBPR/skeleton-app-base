@@ -1,27 +1,35 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App\Presentation\Error\Error4xx;
 
 use Nette;
 use Nette\Application\Attributes\Requires;
+use Nette\Application\Attributes\Persistent;
+use Contributte\Translation\LocalesResolvers\Session;
 
-
-/**
- * Handles 4xx HTTP error responses.
- */
 #[Requires(methods: '*', forward: true)]
 final class Error4xxPresenter extends Nette\Application\UI\Presenter
 {
-	public function renderDefault(Nette\Application\BadRequestException $exception): void
-	{
-		// renders the appropriate error template based on the HTTP status code
-		$code = $exception->getCode();
-		$file = is_file($file = __DIR__ . "/$code.latte")
-			? $file
-			: __DIR__ . '/4xx.latte';
-		$this->template->httpCode = $code;
-		$this->template->setFile($file);
-	}
+    #[Persistent]
+    public string $lang;
+
+    /** @var Nette\Localization\ITranslator @inject */
+    public $translator;
+
+    /** @var Session @inject */
+    public $translatorSessionResolver;
+
+    public function beforeRender(): void
+    {
+        $this->template->lang = $this->translator->getLocale();
+    }
+
+    public function renderDefault(Nette\Application\BadRequestException $exception): void
+    {
+        $code = $exception->getCode();
+        $file = __DIR__ . "/$code.latte";
+        $this->template->httpCode = $code;
+        $this->template->setFile(is_file($file) ? $file : __DIR__ . '/4xx.latte');
+    }
 }

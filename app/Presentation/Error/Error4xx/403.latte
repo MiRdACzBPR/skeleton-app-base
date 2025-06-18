@@ -1,7 +1,20 @@
 {block content}
-<h1 n:block=title>Access Denied</h1>
-
-<p>You do not have permission to view this page. Please try contact the web
-site administrator if you believe you should be able to view this page.</p>
-
-<p><small>error 403</small></p>
+<div class="container mt-5 d-flex flex-column justify-content-center align-items-center text-center">
+  <div class="row w-100 mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 n:block=title class="display-4 mb-3">{_error.accDen}</h1>
+          <p class="lead">
+            {_error.accDenText}
+          </p>
+          <p class="text-muted small">error 403</p>
+          <a n:href=":Home:default'" class="btn btn-primary mt-4">
+            {_error.zpet}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/block}

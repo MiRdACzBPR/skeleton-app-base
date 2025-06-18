@@ -1,7 +1,7 @@
 {cache [$lang,$user->getRoles()]}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <a class="navbar-brand" n:href="Home:default">
+    <a class="navbar-brand" n:href=":Home:default">
     <span class="fs-2">🏡
 </span>
     </a>
@@ -9,18 +9,18 @@
           <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
             {if $user->isLoggedIn() === true}
             <li class="nav-item">
-            	<a n:class="$presenter->isLinkCurrent() ? active, nav-link" n:href="Admin:default">{_sign.h1Admin}</a>
+            	<a n:class="$presenter->isLinkCurrent() ? active, nav-link" n:href=":Admin:default">{_sign.h1Admin}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link ajax" n:href="Admin:logOut">{_sign.logOut}</a>
+                <a class="nav-link ajax" n:href=":Admin:logOut">{_sign.logOut}</a>
             </li>
             {else}
             <li class="nav-item">
-            	<a n:class="$presenter->isLinkCurrent() ? active, nav-link" n:href="Sign:login">{_sign.h1Login}</a>
+            	<a n:class="$presenter->isLinkCurrent() ? active, nav-link" n:href=":Sign:login">{_sign.h1Login}</a>
             </li>
             {/if}
             <li class="nav-item">
-              <a n:class="$presenter->isLinkCurrent() ? active, nav-link" n:href="Sign:register">{_sign.h1}</a>
+              <a n:class="$presenter->isLinkCurrent() ? active, nav-link" n:href=":Sign:register">{_sign.h1}</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,8 +35,8 @@
             </li>
             <div class="vr"></div>
             <li class="nav-item" style="width:38px">
-              <a n:if="$lang == cs" class="nav-link" n:href="this, locale:en">EN</a>
-              <a n:if="$lang == en" class="nav-link" n:href="this, locale:cs">CS</a>
+              <a n:if="$lang == cs" class="nav-link" n:href="this, locale => 'en'">EN</a>
+              <a n:if="$lang == en" class="nav-link" n:href="this, locale => 'cs'">CS</a>
             </li>
           </ul>
         </div>

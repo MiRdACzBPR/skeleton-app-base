@@ -11,8 +11,8 @@
           </li>
             <div class="vr"></div>
             <li class="nav-item" style="width:38px">
-              <a n:if="$lang == cs" class="nav-link" n:href="this, locale:en">EN</a>
-              <a n:if="$lang == en" class="nav-link" n:href="this, locale:cs">CS</a>
+              <a n:if="$lang == cs" class="nav-link" n:href="this, locale => 'en'">EN</a>
+              <a n:if="$lang == en" class="nav-link" n:href="this, locale => 'cs'">CS</a>
             </li>
           </ul>
         </div>

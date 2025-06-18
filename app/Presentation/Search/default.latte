@@ -1,0 +1,24 @@
+{block content}
+  <h1>Vyhledávání</h1>
+
+  <form n:name="searchForm">
+    <div class="input-group mb-3">
+      <input n:name="q" value={$query} placeholder="Hledat…">
+      <input n:name="send">
+    </div>
+  </form>
+
+  {if $results}
+    <ul class="list-group">
+      {foreach $results as $item}
+        <li class="list-group-item">
+          <a n:href="$item['link']">{$item['title']}</a>
+          <p class="mb-0 fst-italic small">…{$item['snippet']}</p>
+        </li>
+      {/foreach}
+    </ul>
+
+  {elseif $query !== null}
+    <p>Nic nenalezeno pro „{$query}“.</p>
+  {/if}
+{/block}

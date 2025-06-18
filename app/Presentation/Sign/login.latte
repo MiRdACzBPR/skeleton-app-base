@@ -1,12 +1,14 @@
 {block content}
-{cache [$lang,$user->getRoles()]}
 <div class="container">
-<h1 class="text-center py-3">{_sign.h1Login|upper}</h1>
-    <div class="card col-12 col-lg-4 mx-auto p-3">
-      <div class="card-body">
-        {control loginForm}
-      </div>
+  {cache [$lang, $user->getRoles()]}<h1 class="text-center py-3">{_sign.h1Login|upper}</h1>{/cache}
+  <div class="card col-12 col-lg-4 mx-auto p-3">
+    <div class="card-body"><p>Nějaký text pro vyhledávání. Letadlo, mic.</p>
+      {control loginForm}
     </div>
-    <a class="col-3 mx-auto text-link d-flex justify-content-center py-3 px-0 link-opacity-75 link-opacity-100-hover" n:href="Sign:register">{_sign.chceReg}</a>
+  </div>
+  {cache [$lang, $user->getRoles()]}
+  <a n:href="Sign:register" class="col-3 mx-auto text-link d-flex justify-content-center py-3 px-0 link-opacity-75 link-opacity-100-hover">
+    {_sign.chceReg}
+  </a>
+  {/cache}
 </div>
-{/cache}

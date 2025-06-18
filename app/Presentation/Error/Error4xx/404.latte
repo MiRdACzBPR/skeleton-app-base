@@ -1,8 +1,22 @@
 {block content}
-<h1 n:block=title>Page Not Found</h1>
-
-<p>The page you requested could not be found. It is possible that the address is
-incorrect, or that the page no longer exists. Please use a search engine to find
-what you are looking for.</p>
-
-<p><small>error 404</small></p>
+{cache [$lang,$user->getRoles()]}
+<div class="container mt-5 d-flex flex-column justify-content-center align-items-center text-center">
+  <div class="row w-100 mt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h1 n:block=title class="display-4 mb-3">{_error.page}</h1>
+          <p class="lead">
+            {_error.pageText}
+          </p>
+          <p class="text-muted small">error 404</p>
+          <a n:href=":Home:default" class="btn btn-primary mt-4">
+            {_error.zpet}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{/cache}
+{/block}

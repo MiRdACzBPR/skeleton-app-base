@@ -15,7 +15,17 @@ final class RouterFactory
 	public static function createRouter(): RouteList
 	{
 		$router = new RouteList;
-		$router->addRoute('[<locale=cs cs|en>/]<presenter>/<action>[/<id>]', 'Home:default');
+        // 1) Hlavní routa: /<presenter>/<action>[/<id>]
+        $router->addRoute(
+            '[<locale=cs cs|en>/]<presenter>/<action>[/<id>]',
+            'Home:default'
+        );
+
+        // 2) Fallback pro všechny ostatní neexistující presenters
+        $router->addRoute(
+            '[<locale=cs cs|en>/]<presenter>[/<action>[/<id><q>]]',
+            'Error4xx:default'
+        );
 		return $router;
 	}
 }
