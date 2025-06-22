@@ -15,6 +15,10 @@ class ComposerStaticInit9c49a418f02ffb235919088891200a26
     );
 
     public static $prefixLengthsPsr4 = array (
+        'T' => 
+        array (
+            'Tester\\' => 7,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -36,6 +40,10 @@ class ComposerStaticInit9c49a418f02ffb235919088891200a26
     );
 
     public static $prefixDirsPsr4 = array (
+        'Tester\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nette/tester/src',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',

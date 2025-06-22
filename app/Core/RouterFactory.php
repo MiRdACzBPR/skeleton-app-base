@@ -17,7 +17,7 @@ final class RouterFactory
 		$router = new RouteList;
         // 1) Hlavní routa: /<presenter>/<action>[/<id>]
         $router->addRoute(
-            '[<locale=cs cs|en>/]<presenter>/<action>[/<id>]',
+            '[<locale=cs cs|en>/]<presenter>/<action>[/<url>]',
             'Home:default'
         );
 

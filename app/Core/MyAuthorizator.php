@@ -7,25 +7,31 @@ namespace App\Core;
 use Nette\Database\Explorer;
 use Nette\Security\Permission;
 use Nette\Security\IAuthorizator;
-use Nette\Security\Role;
-use Nette\Security\Resource;
+use Nette\Caching\Cache;
+use Nette\Caching\Storage;
+use App\Model\ResourceFacade;
 
 final class MyAuthorizator extends Permission implements IAuthorizator
 {
 private bool $initialized = false;
+private Cache $cache;
 
     public function __construct(
-		private Explorer $database,
-	) {}
+        private Explorer $database,
+        private ResourceFacade $resourceFacade,
+        Storage $storage
+    ) {
+        $this->cache = new Cache($storage, 'authorizator');
+    }
 
-    private function initialize(): void
+private function initialize(): void
     {
         if ($this->initialized) {
             return;
         }
         $this->initialized = true;
 
-        // 1) Statické role s dědičností
+        // 1) Statické role
         $this->addRole('guest');
         $this->addRole('user');
         $this->addRole('admin', 'user');
@@ -36,60 +42,60 @@ private bool $initialized = false;
             ->select('DISTINCT role')
             ->fetchPairs('role', 'role');
         foreach ($roles as $role) {
-            if (!$this->hasRole($role)) {
+            if (!$this->hasRole($role)) {   // ← kontrola, aby 'admin' či jiné statické role nebyly přidány podruhé
                 $this->addRole($role);
             }
         }
 
-        // 3) Přidej hned na začátku všechny statické resource
-        foreach (['Home', 'Sign', 'Admin','Search'] as $static) {
-            if (!$this->hasResource($static)) {
-                $this->addResource($static);
-            }
+        // 3) Dynamické resources z fasády
+        $resources = array_keys($this->resourceFacade->getResources());
+        foreach ($resources as $res) {
+            $this->addResource($res);
         }
 
-        // 4) Načti permissions a v jednom průchodu:
-        //    – přidej nový resource, když ho potkáš poprvé
-        //    – hned aplikuj allow/deny
-        $seenResources = [];
-        $selection = $this->database
-            ->table('permissions')
-            ->select('role, resource, privilege, allowed');
+        // 4) Načteme permissions z cache nebo DB jako čisté pole
+        $perms = $this->cache->load('permissions', function (&$deps) {
+            // expire za 5 minut
+            $deps[Cache::EXPIRE] = '300 seconds';
+            return $this->database
+                ->query('SELECT role, resource, privilege, allowed FROM permissions')
+                ->fetchAll(\PDO::FETCH_ASSOC);
+        });
 
-        foreach ($selection as $perm) {
-            $res = $perm->resource;
-
-            // přidej dynamický resource jen jednou
-            if (!isset($seenResources[$res])) {
-                $seenResources[$res] = true;
-                if (!$this->hasResource($res)) {
-                    $this->addResource($res);
-                }
-            }
-
-            $priv = $perm->privilege ?: null;
-            if ($perm->allowed) {
-                $this->allow( $perm->role, $res, $priv );
+        // 5) Aplikace DB pravidel (allow/deny má nejvyšší prioritu)
+        $hasRule = [];
+        foreach ($perms as $perm) {
+            $role     = $perm['role'];
+            $resource = $perm['resource'];
+            $priv     = $perm['privilege'] !== null ? $perm['privilege'] : self::ALL;
+            $hasRule[$role][$resource] = true;
+            if ($perm['allowed']) {
+                $this->allow($role, $resource, $priv);
             } else {
-                $this->deny( $perm->role, $res, $priv );
+                $this->deny($role, $resource, $priv);
             }
         }
 
-        // 5) Pevná pravidla pro základní access
-        $this->allow('guest', 'Search',null);
-        $this->allow('guest', 'Home',  'default');
-        $this->allow('guest', 'Sign',  'login');
-        $this->allow('user',  'Home');
-        $this->allow('user',  'Search',null);
-        $this->allow('user',  'Sign');
-        $this->allow('admin', 'Admin');
+        // 6) Defaultní allow pro guest/user na všechny resources (kromě Admin),
+        //    ale pouze pokud tam není žádné DB pravidlo
+        foreach ($resources as $res) {
+            if ($res === 'Admin') {
+                continue;
+            }
+            if (empty($hasRule['guest'][$res])) {
+                $this->allow('guest', $res, self::ALL);
+            }
+            if (empty($hasRule['user'][$res])) {
+                $this->allow('user', $res, self::ALL);
+            }
+        }
     }
 
-
-
-
-    public function isAllowed( \Nette\Security\Role|string|null $role = self::All, \Nette\Security\Resource|string|null $resource = self::All,?string $privilege = self::All): bool
-    {
+    public function isAllowed(
+    \Nette\Security\Role|string|null     $role      = self::ALL,
+        \Nette\Security\Resource|string|null $resource  = self::ALL,
+        ?string                              $privilege = self::ALL
+    ): bool {
         $this->initialize();
         return parent::isAllowed($role, $resource, $privilege);
     }

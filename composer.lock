@@ -2094,16 +2094,16 @@
     "packages-dev": [
         {
             "name": "nette/tester",
-            "version": "v2.5.4",
+            "version": "v2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/tester.git",
-                "reference": "c11863785779e87b40adebf150364f2e5938c111"
+                "reference": "4b8a8519307598b56142ea0567b2cedb474af3fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/tester/zipball/c11863785779e87b40adebf150364f2e5938c111",
-                "reference": "c11863785779e87b40adebf150364f2e5938c111",
+                "url": "https://api.github.com/repos/nette/tester/zipball/4b8a8519307598b56142ea0567b2cedb474af3fc",
+                "reference": "4b8a8519307598b56142ea0567b2cedb474af3fc",
                 "shasum": ""
             },
             "require": {
@@ -2111,7 +2111,7 @@
             },
             "require-dev": {
                 "ext-simplexml": "*",
-                "phpstan/phpstan": "^1.0"
+                "phpstan/phpstan-nette": "^2.0@stable"
             },
             "bin": [
                 "src/tester"
@@ -2123,6 +2123,9 @@
                 }
             },
             "autoload": {
+                "psr-4": {
+                    "Tester\\": "src"
+                },
                 "classmap": [
                     "src/"
                 ]
@@ -2163,9 +2166,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/tester/issues",
-                "source": "https://github.com/nette/tester/tree/v2.5.4"
+                "source": "https://github.com/nette/tester/tree/v2.5.5"
             },
-            "time": "2024-10-23T23:57:10+00:00"
+            "time": "2025-06-19T17:58:04+00:00"
         }
     ],
     "aliases": [],

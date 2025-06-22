@@ -1,7 +1,9 @@
 services:
 	- App\Core\RouterFactory::createRouter
+	- App\Model\ResourceFacade(%appDir%/Presentation, @cache.storage)
 	- App\Core\MyAuthenticator
 	- App\Core\MyAuthorizator
+	- App\Model\PageRepository
 
 search:
 	- in: %appDir%

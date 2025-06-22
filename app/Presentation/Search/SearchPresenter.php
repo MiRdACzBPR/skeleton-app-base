@@ -11,6 +11,7 @@ use Nette\Utils\Finder;
 use Nette\Utils\Strings;
 use Contributte\FormsBootstrap\BootstrapForm;
 use Contributte\FormsBootstrap\Enums\BootstrapVersion;
+use App\Model\ResourceFacade;
 
 final class SearchPresenter extends BasePresenter
 {
@@ -19,25 +20,9 @@ final class SearchPresenter extends BasePresenter
      *
      * @return array<string, string[]>
      */
-    private function getPages(): array
-    {
-        $pages = [];
-        $baseDir = __DIR__ . '/../'; // app/Presentation
-        foreach (Finder::findDirectories('*')->in($baseDir) as $dir) {
-            $presenterName = $dir->getBasename();
-            if ($presenterName === 'Search') {
-                continue;
-            }
-$actions = [];
-foreach (Finder::findFiles('*.latte')->in($dir->getPathname()) as $file) {
-    $actions[] = pathinfo($file->getFilename(), PATHINFO_FILENAME);
-}
-if ($actions) {
-    $pages[$presenterName] = $actions;
-}
-}
-return $pages;
-}
+    public function __construct(
+		private ResourceFacade $resourceFacade,
+	) {}
 
 public function renderDefault(?string $q = null): void
     {
@@ -51,7 +36,7 @@ public function renderDefault(?string $q = null): void
         $baseDir = __DIR__ . '/../';
 
         // 1) Search in Latte templates
-        foreach ($this->getPages() as $presenter => $actions) {
+        foreach ($this->resourceFacade->getResources() as $presenter => $actions) {
             foreach ($actions as $action) {
                 $path = __DIR__ . "/../$presenter/$action.latte";
                 if (!is_file($path)) {
@@ -134,7 +119,7 @@ public function renderDefault(?string $q = null): void
         // Vypočteme link
         if ($presenter) {
             $link = '';
-            foreach ($this->getPages()[$presenter] as $action) {
+            foreach ($this->resourceFacade->getResources()[$presenter] as $action) {
                 $tpl = __DIR__ . "/../$presenter/$action.latte";
                 $content = is_file($tpl) ? file_get_contents($tpl) : '';
                 if (strpos($content, "{_{$presenter}.{$key}}") !== false) {
